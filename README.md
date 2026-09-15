@@ -2,6 +2,7 @@
 
 Este proyecto es un portfolio personal de Axel Marcelo desarrollado con Astro.
 
+```text
 ## 🚀 Estructura del Proyecto
 /
 ├── public/
@@ -16,6 +17,7 @@ Este proyecto es un portfolio personal de Axel Marcelo desarrollado con Astro.
 │   └── pages
 │       └── index.astro
 └── package.json
+```
 
 # Capturas
 
