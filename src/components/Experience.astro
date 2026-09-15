@@ -1,0 +1,31 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+const EXPERIENCIE = [
+    {
+        date: 'Actualmente...',
+        title: 'Practicante de Desarrollo WEB en la empresa "MACROMEC S.A.C"',
+        description: 'Participación en el desarrollo y mantenimiento de aplicaciones web, trabajando en la implementación de nuevas funcionalidades, corrección de errores y mejora de interfaces.',
+        link: '#'
+    },
+    {
+        date: '2025',
+        title: 'Desarrollo de proyectos web personales',
+        description: 'Desarrollo de proyectos web para fortalecer mis conocimientos en HTML, CSS, JavaScript y frameworks modernos, aplicando buenas prácticas de desarrollo y diseño responsive.',
+    },
+    {
+        date: '2024',
+        title: 'Aprendizaje y formación en desarrollo web',
+        description: 'Formación en tecnologías de desarrollo web, creando diferentes proyectos para mejorar mis habilidades en programación, diseño de interfaces y desarrollo frontend.',
+    }
+]
+---
+<ol class="relative border-s border-gray-200 ml-3">   
+    {
+        EXPERIENCIE.map((experiencie) => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experiencie} />
+            </li>
+        ))
+    }               
+    
+</ol>

@@ -1,0 +1,75 @@
+---
+import Badge from '../components/Badge.astro';
+import Layout from '../layouts/Layout.astro';
+import profileImage from '../assets/marcelo.jpg';
+import LinkedIn from '../components/icons/LinkedIn.astro';
+import SocialPill from '../components/SocialPill.astro';
+import GitHub from '../components/icons/GitHub.astro';
+import Mail from '../components/icons/Mail.astro';
+import Experience from '../components/Experience.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Briefcase from '../components/icons/Briefcase.astro';
+import Code from '../components/icons/Code.astro';
+import Projects from '../components/Projects.astro';
+
+---
+
+<Layout 
+  title="Portfolio de Marcelo - Desarrollador y Programador Web"
+  description="Contrata a Marcelo, un desarrollador web con experiencia en diseño UX/UI y desarrollo de aplicaciones web. Explora su portfolio y descubre cómo puede ayudarte a llevar tu proyecto al siguiente nivel."
+>
+	<main class="px-4">
+		<SectionContainer class="py-44 pb-32">
+			<img 
+    		class="rounded-full size-12 mb-4" 
+    		src={profileImage.src} 
+    		alt="marcelo"
+    		/>
+		<h1 class="text-white text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+			Hola, soy Marcelo <a 
+			href="https://www.linkedin.com/in/marcelaxl/" 
+			target="_blank" 
+			rel="noopener"
+			class="flex justify-center items-center"
+			>	
+		</a>
+		</h1>
+		<h2 class="text-xl lg:text-2xl text-wrap max-w-175">
+			<span>Pregrado. </span><span class="text-yellow-200/90">Desarrollador UX/UI. </span>
+			<span class="text-red-200/90">De Lima, Perú. </span>
+			<span class="opacity-75">Especializado en crear aplicaciones únicas.</span>
+		</h2>
+
+		<nav class="flex gap-x-4 mt-8">
+			<SocialPill href="https://www.linkedin.com/in/marcelaxl/">
+				<LinkedIn class="size-4 md:size-7"/>
+				 LinkedIn
+			</SocialPill>	
+			<SocialPill href="https://github.com/marc-l0">
+				<GitHub class="size-4 md:size-7"/>
+				 GitHub
+			</SocialPill>		
+			<SocialPill href="mailto:marceloaxel3@gmail.com">
+				<Mail class="size-4 md:size-7"/>
+				 marceloaxel3@gmail.com
+			</SocialPill>		
+		</nav>
+		</SectionContainer>
+
+		<SectionContainer id="experiencia">
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
+				<Briefcase class="size-7" />
+				Experiencia Laboral
+			</h2>
+			<Experience />
+		</SectionContainer>
+
+		<SectionContainer id="proyectos">
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
+				<Code class="size-7" />
+				Proyectos
+			</h2>
+			<Projects />
+		</SectionContainer>
+	</main>
+</Layout> 
