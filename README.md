@@ -2,12 +2,6 @@
 
 Portfolio personal con Astro, TypeScript y Tailwind CSS. Incluye presentación, proyectos destacados, experiencia, tecnologías, contacto y un blog con artículos en Markdown.
 
-## Nombre y espacio de trabajo
-
-El paquete se llama `portfolio-axel-marcelo`. Para ver **Portfolio de Axel Marcelo** en el explorador de VS Code, abre `portfolio-axel-marcelo.code-workspace` desde **Archivo → Abrir espacio de trabajo desde archivo**. El archivo usa una ruta relativa, por lo que funciona con cualquier nombre de carpeta local.
-
-Si tu carpeta todavía se llama `porfolio-dev`, puedes cerrarla en VS Code, renombrarla a `portfolio-axel-marcelo` desde el explorador de tu sistema y volver a abrirla. `git pull` no renombra la carpeta que contiene tu copia local. El repositorio remoto sigue llamándose `marc-l0.github.io`, como corresponde a su dirección de GitHub Pages.
-
 ## Desarrollo local
 
 Requisitos: Node.js **22.12 o superior** y npm. Validado con Node 24.
