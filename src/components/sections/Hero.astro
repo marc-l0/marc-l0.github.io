@@ -1,4 +1,5 @@
 ---
+import Pokeball from "../icons/Pokeball.astro";
 import { Image } from "astro:assets";
 import portrait from "../../assets/marcelo.jpg";
 import { profile } from "../../data/portfolio";
@@ -37,7 +38,7 @@ import { profile } from "../../data/portfolio";
         src={portrait}
         alt="Retrato de Axel Marcelo"
         width={580}
-        height={700}
+        height={773}
         loading="eager"
         fetchpriority="high"
       />
@@ -48,9 +49,7 @@ import { profile } from "../../data/portfolio";
         <br />
         <strong>Siempre construyendo.</strong>
       </span>
-      <span class="caption-symbol" aria-hidden="true">
-        ✳︎
-      </span>
+      <Pokeball class="caption-symbol" />
     </div>
   </div>
   <div class="hero-bottom">

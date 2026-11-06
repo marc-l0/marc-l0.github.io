@@ -1,7 +1,7 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import { formatDate } from "../../utils/date";
+import { formatPublication, publicationDate } from "../../utils/date";
 export async function getStaticPaths() {
   return (await getCollection("blog")).map((post) => ({
     params: { slug: post.id },
@@ -28,8 +28,8 @@ const { Content } = await render(post);
       <header class="article-header">
         <p class="eyebrow">Notas del camino · Artículo {post.data.number}</p>
         <h1>{post.data.title}</h1>
-        <time datetime={post.data.pubDate.toISOString()}>
-          {formatDate(post.data.pubDate)}
+        <time datetime={publicationDate(post.data).toISOString()}>
+          {formatPublication(post.data)}
         </time>
         <p class="article-description">{post.data.description}</p>
       </header>

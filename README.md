@@ -61,7 +61,8 @@ Crea un archivo en `src/content/blog/`:
 title: "Título del artículo"
 description: "Resumen del contenido."
 pubDate: 2026-11-06
-number: 3
+publishedAt: "2026-11-06T11:00:00-05:00"
+number: 4
 ---
 
 Contenido del artículo.
@@ -74,3 +75,7 @@ El nombre del archivo determina la URL (`mi-articulo.md` → `/blog/mi-articulo/
 Antes de publicar, ejecuta `npm run build` y revisa la portada, los enlaces de navegación, el contacto y las rutas del blog en escritorio y móvil. El proyecto no define una suite de pruebas automatizadas.
 
 GitHub Actions compila y despliega a GitHub Pages al enviar cambios a `main`. La URL pública se configura con `site` en `astro.config.mjs`. Los comandos de desarrollo no publican cambios.
+
+### Registro de cambios importantes
+
+Documenta cada cambio significativo en una nueva entrada de Notas del camino. Usa la fecha y hora reales de Lima (`America/Lima`) en `publishedAt`, con el offset `-05:00`, y un número único. La portada y el blog ordenan por ese instante; los artículos antiguos sin hora conservan su fecha original. El timestamp del ejemplo es ilustrativo: reemplázalo por la hora real de publicación.

@@ -20,3 +20,13 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Notas del camino
+
+For every significant portfolio change, add a concise Spanish entry in
+`src/content/blog/` explaining what changed and why. Use the actual date and time
+in `America/Lima` (UTC-05:00), never an invented or backdated time. Include
+`publishedAt` as an ISO 8601 timestamp with offset, `pubDate` as the local date,
+and the next unique `number`. Update the notes before completing the task.
+Only describe completed changes; identify any pending work explicitly.
+Preserve existing posts. The home page displays the two most recent entries.

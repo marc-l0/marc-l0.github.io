@@ -1,9 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import SectionHeading from "../ui/SectionHeading.astro";
-import { formatDate } from "../../utils/date";
+import { formatPublication, publicationDate } from "../../utils/date";
 const posts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .sort(
+    (a, b) =>
+      publicationDate(b.data).valueOf() - publicationDate(a.data).valueOf(),
+  )
   .slice(0, 2);
 ---
 
@@ -21,8 +24,8 @@ const posts = (await getCollection("blog"))
   <div class="writing-list">
     {posts.map((post) => (
       <a class="writing-item" href={`/blog/${post.id}/`}>
-        <time datetime={post.data.pubDate.toISOString()}>
-          {formatDate(post.data.pubDate)}
+        <time datetime={publicationDate(post.data).toISOString()}>
+          {formatPublication(post.data)}
         </time>
         <h3>{post.data.title}</h3>
         <span aria-hidden="true">↗</span>
