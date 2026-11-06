@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { projects, profile } from "../../data/portfolio";
+import { profile } from "../../data/portfolio";
+import { projects } from "../../data/projects";
 import SectionHeading from "../ui/SectionHeading.astro";
 ---
 
@@ -8,7 +9,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
   <div class="section-top">
     <SectionHeading
       number="01"
-      eyebrow="Trabajo seleccionado"
+      eyebrow="Proyectos destacados"
       title="De la idea a la práctica."
     />
     <a
@@ -29,45 +30,25 @@ import SectionHeading from "../ui/SectionHeading.astro";
         ]}
       >
         <span class="project-index">{String(index + 1).padStart(2, "0")}</span>
-        {project.image ? (
-          <>
-            {typeof project.image === "string" ? (
-              <img
-                src={project.image}
-                alt={project.imageAlt ?? project.title}
-                loading="lazy"
-                width="1200"
-                height="720"
-              />
-            ) : (
-              <Image
-                src={project.image}
-                alt={project.imageAlt ?? project.title}
-                widths={[240, 480]}
-                sizes="(max-width:700px) 40vw, 170px"
-                loading="lazy"
-              />
-            )}
-            {project.secondaryImage && (
-              <Image
-                src={project.secondaryImage}
-                alt={project.secondaryImageAlt ?? project.title}
-                widths={[240, 480]}
-                sizes="(max-width:700px) 40vw, 170px"
-                loading="lazy"
-              />
-            )}
-          </>
-        ) : (
-          <div class="project-cover">
-            <span class="eyebrow">{project.category}</span>
-            <span class="project-cover-title">
-              {project.title}
-              <span aria-hidden="true">.</span>
-            </span>
-            {project.coverTagline && <p>{project.coverTagline}</p>}
-            <span class="project-cover-label">{project.status}</span>
-          </div>
+        <Image
+          src={project.image}
+          alt={project.imageAlt}
+          widths={project.secondaryImage ? [240, 480] : [480, 960, 1440]}
+          sizes={
+            project.secondaryImage
+              ? "(max-width:700px) 40vw, 170px"
+              : "(max-width:700px) 90vw, (max-width:1000px) 50vw, 640px"
+          }
+          loading="lazy"
+        />
+        {project.secondaryImage && (
+          <Image
+            src={project.secondaryImage}
+            alt={project.secondaryImageAlt ?? project.title}
+            widths={[240, 480]}
+            sizes="(max-width:700px) 40vw, 170px"
+            loading="lazy"
+          />
         )}
       </div>
       <div class="project-content">

@@ -6,7 +6,7 @@ La aplicación tiene dos públicos: el administrador, que organiza las clases y 
 
 ## Mi participación
 
-Desarrollé el proyecto de forma individual como parte de mis prácticas. Me encargué del frontend, el backend, la integración con Google Sheets y la autenticación, además de la adaptación a celulares, las pruebas y la corrección de errores. Utilicé herramientas de inteligencia artificial como apoyo durante el desarrollo.
+Desarrollé el proyecto de forma individual como parte de mis prácticas. Me encargué del frontend, el backend, la integración con Google Sheets y la autenticación, además de la adaptación a celulares, las pruebas y la corrección de errores.
 
 ## Dos recorridos conectados
 
