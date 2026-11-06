@@ -6,6 +6,13 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://marc-l0.github.io',
+  redirects: {
+    '/blog/identidad-visual-y-notas-del-camino/': '/blog/tercer-post/',
+    '/blog/nuevo-retrato-personal/': '/blog/tercer-post/',
+    '/blog/mi-dojo-gestion-karate/': '/blog/tercer-post/',
+    '/blog/mi-dojo-pantallas-moviles/': '/blog/tercer-post/',
+    '/blog/estructura-ordenada-del-portfolio/': '/blog/tercer-post/',
+  },
   vite: {
     plugins: [tailwindcss()]
   }
