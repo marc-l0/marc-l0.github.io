@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { projects, profile } from "../../data/portfolio";
 import SectionHeading from "../ui/SectionHeading.astro";
 ---
@@ -21,35 +22,81 @@ import SectionHeading from "../ui/SectionHeading.astro";
   </div>
   {projects.map((project, index) => (
     <article class="project">
-      <div class="project-image">
+      <div
+        class:list={[
+          "project-image",
+          { "project-image--screens": project.secondaryImage },
+        ]}
+      >
         <span class="project-index">{String(index + 1).padStart(2, "0")}</span>
-        <img
-          src={project.image}
-          alt={project.imageAlt}
-          loading="lazy"
-          width="1200"
-          height="720"
-        />
+        {project.image ? (
+          <>
+            {typeof project.image === "string" ? (
+              <img
+                src={project.image}
+                alt={project.imageAlt ?? project.title}
+                loading="lazy"
+                width="1200"
+                height="720"
+              />
+            ) : (
+              <Image
+                src={project.image}
+                alt={project.imageAlt ?? project.title}
+                widths={[240, 480]}
+                sizes="(max-width:700px) 40vw, 170px"
+                loading="lazy"
+              />
+            )}
+            {project.secondaryImage && (
+              <Image
+                src={project.secondaryImage}
+                alt={project.secondaryImageAlt ?? project.title}
+                widths={[240, 480]}
+                sizes="(max-width:700px) 40vw, 170px"
+                loading="lazy"
+              />
+            )}
+          </>
+        ) : (
+          <div class="project-cover">
+            <span class="eyebrow">{project.category}</span>
+            <span class="project-cover-title">
+              {project.title}
+              <span aria-hidden="true">.</span>
+            </span>
+            {project.coverTagline && <p>{project.coverTagline}</p>}
+            <span class="project-cover-label">{project.status}</span>
+          </div>
+        )}
       </div>
       <div class="project-content">
         <p class="eyebrow">{project.category}</p>
         <h3>{project.title}</h3>
+        {project.status && <p class="project-status">{project.status}</p>}
         <p>{project.description}</p>
         <ul class="tags" aria-label="Tecnologías">
           {project.technologies.map((tag) => (
             <li>{tag}</li>
           ))}
         </ul>
-        {project.source && (
-          <a
-            class="text-link"
-            href={project.source}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ver código ↗
-          </a>
-        )}
+        <div class="project-actions">
+          {project.details && (
+            <a class="text-link" href={project.details}>
+              Explorar el proyecto ↗
+            </a>
+          )}
+          {project.source && (
+            <a
+              class="text-link"
+              href={project.source}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver código ↗
+            </a>
+          )}
+        </div>
       </div>
     </article>
   ))}

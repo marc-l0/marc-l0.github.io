@@ -79,3 +79,7 @@ GitHub Actions compila y despliega a GitHub Pages al enviar cambios a `main`. La
 ### Registro de cambios importantes
 
 Documenta cada cambio significativo en una nueva entrada de Notas del camino. Usa la fecha y hora reales de Lima (`America/Lima`) en `publishedAt`, con el offset `-05:00`, y un número único. La portada y el blog ordenan por ese instante; los artículos antiguos sin hora conservan su fecha original. El timestamp del ejemplo es ilustrativo: reemplázalo por la hora real de publicación.
+
+## Casos de estudio
+
+Mi Dojo tiene una página en `/proyectos/mi-dojo/`. La descripción y ficha de portada se editan en `src/data/portfolio.ts`, el relato en `src/content/projects/mi-dojo.md` y la composición con imágenes en `src/pages/proyectos/mi-dojo.astro`. Las imágenes seleccionadas del proceso están en `src/assets/projects/mi-dojo/` y Astro las optimiza al compilar. Las capturas de prototipos se identifican como históricas. Las pantallas de la demostración móvil se presentan en una galería independiente con enlaces para ampliar; clases y postulaciones también forman la portada del proyecto.

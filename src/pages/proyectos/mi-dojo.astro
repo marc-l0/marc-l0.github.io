@@ -1,0 +1,191 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import { Content } from "../../content/projects/mi-dojo.md";
+import initialForm from "../../assets/projects/mi-dojo/formulario-inicial.jpeg";
+import classesScreen from "../../assets/projects/mi-dojo/clases-movil.jpeg";
+import applicationsScreen from "../../assets/projects/mi-dojo/postulaciones-movil.jpeg";
+import qrScreen from "../../assets/projects/mi-dojo/convocatoria-qr.jpeg";
+import formScreen from "../../assets/projects/mi-dojo/formulario-movil.jpeg";
+import formEvolution from "../../assets/projects/mi-dojo/evolucion-formulario.jpeg";
+
+const screens = [
+  {
+    image: classesScreen,
+    title: "Clases y disponibilidad",
+    alt: "Pantalla móvil de clases vigentes con horarios, cupos y accesos a postulaciones y QR",
+    caption:
+      "Horarios, cupos y accesos a las acciones de gestión reunidos en la ficha de cada clase.",
+  },
+  {
+    image: applicationsScreen,
+    title: "Revisión de postulaciones",
+    alt: "Pantalla móvil de postulaciones con búsqueda, filtro por estado y cupos restantes",
+    caption:
+      "Selección de clase, búsqueda y filtro por estado. La pantalla aclara que una solicitud pendiente no reserva una vacante.",
+  },
+  {
+    image: qrScreen,
+    title: "Una convocatoria para compartir",
+    alt: "Convocatoria generada con código QR y opciones para copiar el enlace y compartir por WhatsApp",
+    caption:
+      "QR, enlace y opciones para compartir el formulario. El código de esta captura corresponde a la demostración en red local.",
+  },
+  {
+    image: formScreen,
+    title: "Postulación desde el celular",
+    alt: "Formulario móvil público con resumen de la clase, disponibilidad y campos del postulante",
+    caption:
+      "La persona consulta la información de la clase y completa su solicitud. La vacante se confirma después de la revisión del dojo.",
+  },
+];
+---
+
+<Layout
+  title="Mi Dojo — Proyecto de Axel Marcelo"
+  description="Mi proceso de desarrollo de una aplicación web para gestionar clases de karate, profesores, cupos y postulaciones, con NestJS, React y Google Sheets."
+>
+  <main id="contenido" class="container case-study">
+    <a class="text-link" href="/#proyectos">
+      ← Volver a proyectos
+    </a>
+    <header class="case-header">
+      <p class="eyebrow">Desarrollo individual · Proyecto de prácticas</p>
+      <h1>
+        Mi Dojo<span>.</span>
+      </h1>
+      <p class="case-lead">
+        Menos gestión dispersa.
+        <br />
+        Más espacio para enseñar.
+      </p>
+      <p class="case-summary">
+        Una aplicación web adaptable a celulares para organizar clases de
+        karate, profesores y postulaciones.
+      </p>
+      <dl class="case-facts">
+        <div>
+          <dt>Mi rol</dt>
+          <dd>Frontend y backend</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>En desarrollo</dd>
+        </div>
+        <div>
+          <dt>Demostración</dt>
+          <dd>Funcional en red local</dd>
+        </div>
+      </dl>
+      <nav class="case-links" aria-label="Enlaces del proyecto">
+        <a
+          class="button button-primary"
+          href="https://github.com/marc-l0/gestion-dojo-karate"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Repositorio ↗
+        </a>
+        <a
+          class="text-link"
+          href="https://github.com/marc-l0/gestion-dojo-karate/tree/feature/postulaciones-movil"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Rama de desarrollo ↗
+        </a>
+        <a class="text-link" href="#pantallas">
+          Ver las pantallas ↓
+        </a>
+        <a class="text-link" href="#proceso">
+          Ver el proceso ↓
+        </a>
+      </nav>
+    </header>
+    <section
+      id="pantallas"
+      class="case-screens"
+      aria-labelledby="screens-title"
+    >
+      <p class="eyebrow">Versión funcional · Experiencia móvil</p>
+      <h2 id="screens-title">De la clase a la postulación.</h2>
+      <p>
+        Un recorrido por la gestión del dojo y la inscripción pública, a través
+        de capturas reales de la demostración local.
+      </p>
+      <div class="screen-gallery">
+        {screens.map((screen, index) => (
+          <figure>
+            <a
+              href={screen.image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ampliar captura: ${screen.title} (abre en otra pestaña)`}
+            >
+              <Image
+                src={screen.image}
+                alt={screen.alt}
+                widths={[320, 640, 840]}
+                sizes="(max-width:500px) 85vw, (max-width:1000px) 40vw, 260px"
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <span>
+                {String(index + 1).padStart(2, "0")} / {screen.title}
+              </span>
+              {screen.caption}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+    <div class="case-body prose">
+      <Content />
+    </div>
+    <section id="proceso" class="case-process" aria-labelledby="process-title">
+      <p class="eyebrow">Archivo del desarrollo</p>
+      <h2 id="process-title">
+        Del formulario inicial a una experiencia más completa.
+      </h2>
+      <p>
+        Estas imágenes documentan etapas tempranas del proceso. No representan
+        la interfaz actual de la aplicación.
+      </p>
+      <div class="process-gallery">
+        <figure>
+          <Image
+            src={initialForm}
+            alt="Prototipo inicial del formulario con campos vacíos del postulante y del apoderado"
+            widths={[360, 715]}
+            sizes="(max-width:700px) 100vw, 715px"
+            loading="lazy"
+          />
+          <figcaption>
+            <span>01 / Primer formulario</span>Exploración inicial de los datos
+            de postulación y de la sección del apoderado al seleccionar la
+            opción de menor de edad.
+          </figcaption>
+        </figure>
+        <figure>
+          <Image
+            src={formEvolution}
+            alt="Esquema del formulario con fecha de nacimiento y nota de diseño sobre cómo determinar la minoría de edad"
+            widths={[600, 1126]}
+            sizes="(max-width:700px) 100vw, 1126px"
+            loading="lazy"
+          />
+          <figcaption>
+            <span>02 / Evolución del planteamiento</span>El esquema propone usar
+            la fecha de nacimiento para determinar la minoría de edad, en lugar
+            de pedir una respuesta manual. Documenta la decisión planteada
+            durante el proceso.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <a class="text-link back-link" href="/#proyectos">
+      ← Volver a proyectos
+    </a>
+  </main>
+</Layout>
