@@ -1,0 +1,30 @@
+---
+import { experience } from "../../data/portfolio";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section id="experiencia" class="section container experience-section">
+  <SectionHeading
+    number="02"
+    eyebrow="Mi recorrido"
+    title="Aprender haciendo."
+  />
+  <ol class="experience-list">
+    {experience.map((item) => (
+      <li class="experience-item">
+        <div class="experience-period">
+          <span
+            class:list={["timeline-dot", { current: item.current }]}
+            aria-hidden="true"
+          ></span>
+          {item.period}
+        </div>
+        <div>
+          <p class="eyebrow">{item.organization}</p>
+          <h3>{item.role}</h3>
+          <p>{item.description}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { formatDate } from "../../utils/date";
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+---
+
+<section class="section container">
+  <div class="section-top">
+    <SectionHeading
+      number="04"
+      eyebrow="Notas del camino"
+      title="También lo escribo."
+    />
+    <a class="text-link" href="/blog/">
+      Todos los artículos ↗
+    </a>
+  </div>
+  <div class="writing-list">
+    {posts.map((post) => (
+      <a class="writing-item" href={`/blog/${post.id}/`}>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {formatDate(post.data.pubDate)}
+        </time>
+        <h3>{post.data.title}</h3>
+        <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</section>

@@ -1,60 +1,39 @@
 ---
-import "@fontsource-variable/onest"
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-
+import "@fontsource-variable/onest";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import "../styles/global.css";
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
+  type?: "website" | "article";
 }
-
-const { description, title } = Astro.props;
+const { title, description, type = "website" } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-
-	<body class="px-4">
-		<div
-			class="fixed inset-0 z-[-2] w-full bg-neutral-950 bg-
-			[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),
-			rgba(255,255,255,0))]"
-		>
-		</div>
-		<Header />
-		<slot />
-		<Footer />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#141413" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="es_PE" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">
+      Saltar al contenido
+    </a>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
-
-<style is:global>
-	:root {
-		color-scheme: light dark;
-	}
-	html {
-		font-family: 'Onest Variable', system-ui, sans-serif;
-		scroll-behavior: smooth;
-	}
-
-	body {
-		background-color: #050505;
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	@media (prefers-reduce-motion: reduce) {
-		html {
-			scroll-behavior: auto;
-		}
-	}
-</style>

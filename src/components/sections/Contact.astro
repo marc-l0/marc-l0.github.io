@@ -1,0 +1,29 @@
+---
+import { profile } from "../../data/portfolio";
+---
+
+<section
+  id="contacto"
+  class="contact-section container"
+  aria-labelledby="contact-title"
+>
+  <p class="eyebrow">¿Tienes un proyecto en mente?</p>
+  <h2 id="contact-title">
+    Empecemos una
+    <br />
+    <span>conversación.</span>
+  </h2>
+  <div class="contact-bottom">
+    <a class="contact-email" href={`mailto:${profile.email}`}>
+      {profile.email} <span aria-hidden="true">↗</span>
+    </a>
+    <div class="social-links">
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+        LinkedIn ↗
+      </a>
+      <a href={profile.github} target="_blank" rel="noopener noreferrer">
+        GitHub ↗
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import { navigation, profile } from "../../data/portfolio";
+const isBlog = Astro.url.pathname.startsWith("/blog");
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="/" aria-label={`${profile.name}, inicio`}>
+      marcelo<span> / </span>dev<span class="brand-dot">.</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      {navigation.map(({ label, href }) => (
+        <a
+          href={href}
+          aria-current={label === "Blog" && isBlog ? "page" : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+    <a class="header-contact" href="/#contacto">
+      Hablemos <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>

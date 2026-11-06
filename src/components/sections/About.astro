@@ -1,0 +1,33 @@
+---
+import { skills } from "../../data/portfolio";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section id="sobre-mi" class="section container about-section">
+  <SectionHeading
+    number="03"
+    eyebrow="Un poco sobre mí"
+    title="Curiosidad como punto de partida."
+  />
+  <div class="about-content">
+    <p class="about-lead">
+      Me interesa lo que sucede entre una buena idea y una experiencia fácil de
+      usar.
+    </p>
+    <p>
+      Estoy en formación y desarrollo proyectos para seguir creciendo como
+      programador. Me gusta trabajar tanto en la lógica de una aplicación como
+      en los detalles de su interfaz.
+    </p>
+    <p>
+      Desde Lima, Perú, comparto aquí lo que construyo y lo que aprendo por el
+      camino.
+    </p>
+    <h3>Herramientas con las que trabajo</h3>
+    <ul class="tags">
+      {skills.map((skill) => (
+        <li>{skill}</li>
+      ))}
+    </ul>
+  </div>
+</section>

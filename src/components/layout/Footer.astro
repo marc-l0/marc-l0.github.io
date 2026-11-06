@@ -1,0 +1,13 @@
+---
+import { profile } from "../../data/portfolio";
+---
+
+<footer class="site-footer container">
+  <p>
+    © {new Date().getFullYear()} {profile.name}
+  </p>
+  <p>Hecho con intención. Desde {profile.location}.</p>
+  <a href={profile.github} target="_blank" rel="noopener noreferrer">
+    GitHub <span aria-hidden="true">↗</span>
+  </a>
+</footer>
