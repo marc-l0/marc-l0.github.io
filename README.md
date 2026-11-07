@@ -93,7 +93,7 @@ Contenido del artículo.
 
 El timestamp es ilustrativo: reemplázalo por la fecha y hora reales de Lima (`America/Lima`, UTC-05:00) y usa el siguiente número único. Documenta cada cambio importante en una nueva entrada de Notas del camino, conservando el historial.
 
-El nombre del archivo determina la URL (`mi-articulo.md` → `/blog/mi-articulo/`). La portada muestra las dos entradas más recientes. Los artículos se ordenan por `publishedAt`, o por `pubDate` en las entradas antiguas sin hora. Astro valida los metadatos al compilar.
+El nombre del archivo determina la URL (`mi-articulo.md` → `/blog/mi-articulo/`). La portada enlaza al blog, donde los artículos se ordenan por `publishedAt`, o por `pubDate` en las entradas antiguas sin hora. Astro valida los metadatos al compilar.
 
 ## Comprobaciones y despliegue
 
@@ -122,3 +122,21 @@ Las tecnologías se agrupan en `technologyGroups` dentro de `src/data/portfolio.
 `src/pages/sitemap.xml.ts` genera el sitemap a partir de los artículos y las páginas de proyecto publicadas. Excluye confirmaciones y redirecciones antiguas. `src/pages/robots.txt.ts` anuncia ese sitemap usando la dirección `site` configurada en Astro.
 
 La lista de publicación y comprobación real del contacto está en [docs/pre-publicacion.md](docs/pre-publicacion.md). Las pruebas locales del formulario deben distinguir `astro dev` (envío bloqueado expresamente) de `astro preview` (build de producción, sin receptor de Netlify).
+
+## Navegación por páginas
+
+La portada contiene la presentación y accesos visuales a las secciones. El contenido completo vive en páginas independientes:
+
+| Sección                | Ruta            |
+| ---------------------- | --------------- |
+| Servicios              | `/servicios/`   |
+| Proyectos              | `/proyectos/`   |
+| Experiencia            | `/experiencia/` |
+| Sobre mí y tecnologías | `/sobre-mi/`    |
+| Proceso                | `/proceso/`     |
+| Blog                   | `/blog/`        |
+| Contacto y cotización  | `/contacto/`    |
+
+`src/layouts/SectionLayout.astro` comparte la estructura de las pantallas y reutiliza los componentes de `src/components/sections/` en modo `standalone`. La navegación superior y las tarjetas de portada usan la misma lista en `src/data/portfolio.ts`. El caso de estudio de Mi Dojo conserva `/proyectos/mi-dojo/`.
+
+Los CTA usan `/contacto/?servicio=...#contacto`. El nombre del formulario de Netlify no cambia. Los marcadores de la versión anterior (`/#servicios`, `/#proyectos`, etc.) se conservan mediante `src/scripts/legacy-anchors.ts`. Las rutas nuevas están incluidas automáticamente en el sitemap.

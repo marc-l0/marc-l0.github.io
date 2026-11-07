@@ -1,6 +1,11 @@
 ---
 import { profile } from "../../data/portfolio";
 import QuoteForm from "../forms/QuoteForm.astro";
+interface Props {
+  standalone?: boolean;
+}
+const { standalone = false } = Astro.props;
+const Heading = standalone ? "h1" : "h2";
 ---
 
 <section
@@ -10,11 +15,11 @@ import QuoteForm from "../forms/QuoteForm.astro";
 >
   <div class="contact-heading">
     <p class="eyebrow">Tu próximo proyecto empieza aquí</p>
-    <h2 id="contact-title">
+    <Heading id="contact-title">
       Hablemos de
       <br />
       <span>tu proyecto.</span>
-    </h2>
+    </Heading>
     <p class="section-intro">
       Cuéntame la idea, el reto o lo que necesitas mejorar. A partir de ahí,
       podemos definir una solución y una propuesta a medida.

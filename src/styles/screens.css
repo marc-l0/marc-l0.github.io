@@ -1,0 +1,150 @@
+/* Dedicated screens reuse the existing section components. */
+.screen-main {
+  min-height: 70vh;
+}
+.screen-navigation {
+  padding-top: 30px;
+}
+.screen-main > .section {
+  padding-top: 45px;
+  padding-bottom: 75px;
+  border-bottom: 0;
+}
+.screen-main > .contact-section {
+  padding-top: 35px;
+}
+.screen-main .section-heading h1 {
+  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+  line-height: 1.14;
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  margin-top: 18px;
+}
+.screen-main :is(.experience-section, .about-section) .section-heading h1 {
+  font-size: clamp(2.3rem, 3.4vw, 3.2rem);
+  max-width: 340px;
+}
+.screen-main .contact-heading h1 {
+  font-size: clamp(3rem, 6.8vw, 6rem);
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+  font-weight: 450;
+  margin-top: 25px;
+}
+.screen-main .contact-heading h1 > span {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+.home-destinations {
+  padding-block: 55px 75px;
+}
+.destinations-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.destinations-heading h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 450;
+  letter-spacing: -0.045em;
+  margin-top: 12px;
+}
+.destinations-heading > p {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.destination-card {
+  display: flex;
+  gap: 18px;
+  padding: 25px 22px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
+  min-height: 160px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.destination-card:hover {
+  border-color: #88765a;
+  background: #24231e;
+}
+.destination-number {
+  color: var(--accent);
+  font-size: 0.65rem;
+  line-height: 2;
+}
+.destination-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.destination-copy strong {
+  font-size: 1.2rem;
+  font-weight: 450;
+  letter-spacing: -0.03em;
+}
+.destination-copy > span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.destination-arrow {
+  color: var(--accent);
+  margin-left: auto;
+}
+.header-contact[aria-current] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+@media (max-width: 1000px) {
+  .destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .site-header nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 12px;
+  }
+  .site-header nav a {
+    justify-content: center;
+  }
+  html {
+    scroll-padding-top: 205px;
+  }
+  .destinations-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .screen-main :is(.experience-section, .about-section) .section-heading h1 {
+    max-width: none;
+  }
+  .screen-main > .section {
+    padding-top: 30px;
+    padding-bottom: 55px;
+  }
+  .home-destinations {
+    padding-block: 40px 55px;
+  }
+}
+@media (max-width: 480px) {
+  .destination-grid {
+    grid-template-columns: 1fr;
+  }
+  .destination-card {
+    min-height: 130px;
+  }
+}

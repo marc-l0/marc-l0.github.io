@@ -4,11 +4,17 @@ import { profile } from "../../data/portfolio";
 import { projects } from "../../data/projects";
 import ProjectCTA from "../ui/ProjectCTA.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
+interface Props {
+  standalone?: boolean;
+}
+const { standalone = false } = Astro.props;
+const Subheading = standalone ? "h2" : "h3";
 ---
 
 <section id="proyectos" class="section container">
   <div class="section-top">
     <SectionHeading
+      as={standalone ? "h1" : "h2"}
       number="02"
       eyebrow="Proyectos destacados"
       title="De la idea a la práctica."
@@ -54,7 +60,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
       </div>
       <div class="project-content">
         <p class="eyebrow">{project.category}</p>
-        <h3>{project.title}</h3>
+        <Subheading>{project.title}</Subheading>
         {project.status && <p class="project-status">{project.status}</p>}
         <p>{project.description}</p>
         <dl class="project-context">
@@ -84,7 +90,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
           ))}
         </ul>
         <div class="project-actions">
-          <a class="text-link" href="/?servicio=full-stack#contacto">
+          <a class="text-link" href="/contacto/?servicio=full-stack#contacto">
             Consultar una solución similar
             <span class="sr-only"> a {project.title}</span> ↗
           </a>

@@ -26,7 +26,7 @@
   padding: 28px;
   background: var(--surface);
 }
-.service-card h3 {
+.service-card :is(h2, h3) {
   font-size: 1.4rem;
   font-weight: 450;
   letter-spacing: -0.04em;
@@ -75,7 +75,7 @@
   color: var(--accent);
   font-size: 0.72rem;
 }
-.workflow-grid h3 {
+.workflow-grid :is(h2, h3) {
   font-size: 1.15rem;
   font-weight: 450;
   margin-block: 18px 12px;
@@ -307,7 +307,7 @@ button:focus-visible {
   .service-card {
     padding: 22px;
   }
-  .service-card h3 {
+  .service-card :is(h2, h3) {
     font-size: 1.25rem;
   }
   .contact-grid {
@@ -347,7 +347,7 @@ button:focus-visible {
   .service-card {
     padding: 26px;
   }
-  .service-card h3 {
+  .service-card :is(h2, h3) {
     font-size: 1.5rem;
   }
   .contact-grid {
@@ -418,7 +418,7 @@ textarea:focus-visible {
   gap: 26px;
   margin-top: 24px;
 }
-.technology-groups h4 {
+.technology-groups :is(h3, h4) {
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--accent);

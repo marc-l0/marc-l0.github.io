@@ -2,7 +2,7 @@
 
 ## Integración elegida
 
-El portfolio sigue siendo un sitio estático de Astro. El formulario `cotizacion` se genera en el HTML de la portada con `data-netlify="true"`, un campo oculto `form-name` y el señuelo `bot-field`. Netlify detecta el formulario al desplegar y procesa los envíos. No se necesita base de datos, función de servidor ni clave privada.
+El portfolio sigue siendo un sitio estático de Astro. El formulario `cotizacion` se genera en el HTML de `/contacto/` con `data-netlify="true"`, un campo oculto `form-name` y el señuelo `bot-field`. Netlify detecta el formulario al desplegar y procesa los envíos. No se necesita base de datos, función de servidor ni clave privada.
 
 Con JavaScript se envía un POST real a `/` codificado como `application/x-www-form-urlencoded`, siguiendo el flujo de Netlify Forms. Solo se muestra éxito ante una respuesta HTTP satisfactoria; los fallos conservan los datos. Sin JavaScript se utiliza el POST HTML estándar con destino `/gracias/`. La validación nativa del navegador permanece disponible sin JavaScript.
 
@@ -35,11 +35,11 @@ Se reciben nombre, email, empresa opcional, servicio, descripción, presupuesto 
 
 La protección básica incluye el campo señuelo de Netlify y su filtrado de spam. La validación en el navegador facilita el uso, pero no debe considerarse una barrera de seguridad de servidor. No se solicitan contraseñas ni datos sensibles. El texto del formulario explica para qué se usarán los datos.
 
-Para cambiar los servicios, edita `src/data/services.ts`. Los enlaces `/?servicio=full-stack#contacto`, `/?servicio=desarrollo-web#contacto` y `/?servicio=mantenimiento#contacto` preseleccionan el campo. El valor `por-definir` sirve a quien necesita orientación.
+Para cambiar los servicios, edita `src/data/services.ts`. Los enlaces `/contacto/?servicio=full-stack#contacto`, `/contacto/?servicio=desarrollo-web#contacto` y `/contacto/?servicio=mantenimiento#contacto` preseleccionan el campo. El valor `por-definir` sirve a quien necesita orientación.
 
 ## Comprobaciones antes de publicar
 
-- Ejecutar `npm run build` y confirmar que el formulario existe en `dist/index.html`, incluidos su nombre, el campo `form-name`, el señuelo y todos los campos.
+- Ejecutar `npm run build` y confirmar que el formulario existe en `dist/contacto/index.html`, incluidos su nombre, el campo `form-name`, el señuelo y todos los campos.
 - Abrir los CTA de servicios y de proyecto; comprobar la preselección y que no se borran los datos al cambiar de servicio en la misma página.
 - Probar campos vacíos, email inválido y descripción breve; los errores deben impedir la petición y enfocar el primer campo inválido.
 - Ante un error de red o HTTP, deben conservarse los datos y habilitarse el reintento. Durante el envío no se admiten solicitudes duplicadas.
@@ -67,3 +67,7 @@ Para cerrar la verificación real:
 6. Repite desde un teléfono y comprueba también el envío sin JavaScript.
 
 En producción se mantienen los campos al recibir errores HTTP, fallos de red o tiempos de espera. Una respuesta HTTP aceptada muestra confirmación, pero la comprobación de almacenamiento y correo siempre se hace en el panel. No se valida la recepción mediante una respuesta de prueba local.
+
+## Página de contacto independiente
+
+El formulario se genera ahora en `/contacto/`, manteniendo `name="cotizacion"`, los campos y el envío al receptor de Netlify. Netlify debe detectar los formularios en todos los HTML del despliegue, no solo en `index.html`. Tras publicar esta reorganización, confirma que `cotizacion` sigue apareciendo en Forms y realiza una prueba real. Los enlaces anteriores con `/#contacto` se trasladan a la nueva página conservando el servicio mediante un pequeño script de compatibilidad en la portada.

@@ -1,10 +1,17 @@
 ---
 import { technologyGroups } from "../../data/portfolio";
 import SectionHeading from "../ui/SectionHeading.astro";
+interface Props {
+  standalone?: boolean;
+}
+const { standalone = false } = Astro.props;
+const Subheading = standalone ? "h2" : "h3";
+const GroupHeading = standalone ? "h3" : "h4";
 ---
 
 <section id="sobre-mi" class="section container about-section">
   <SectionHeading
+    as={standalone ? "h1" : "h2"}
     number="04"
     eyebrow="Un poco sobre mí"
     title="Curiosidad como punto de partida."
@@ -24,11 +31,11 @@ import SectionHeading from "../ui/SectionHeading.astro";
       conocimientos. Me interesa entender cada necesidad y convertirla en una
       herramienta útil, fácil de usar y de mantener.
     </p>
-    <h3>Tecnologías con las que trabajo</h3>
+    <Subheading>Tecnologías con las que trabajo</Subheading>
     <div class="technology-groups">
       {technologyGroups.map((group) => (
         <section aria-label={group.title}>
-          <h4>{group.title}</h4>
+          <GroupHeading>{group.title}</GroupHeading>
           <ul class="tags">
             {group.items.map((item) => (
               <li>{item}</li>

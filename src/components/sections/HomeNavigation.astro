@@ -1,0 +1,31 @@
+---
+import { navigation } from "../../data/portfolio";
+---
+
+<section
+  id="explorar"
+  class="container home-destinations"
+  aria-labelledby="explore-title"
+>
+  <div class="destinations-heading">
+    <div>
+      <p class="eyebrow">Elige por dónde empezar</p>
+      <h2 id="explore-title">Cada parte, en su lugar.</h2>
+    </div>
+    <p>Conoce mi trabajo a tu ritmo.</p>
+  </div>
+  <nav class="destination-grid" aria-label="Explorar el portfolio">
+    {navigation.map((item, index) => (
+      <a class="destination-card" href={item.href}>
+        <span class="destination-number">0{index + 1}</span>
+        <span class="destination-copy">
+          <strong>{item.label}</strong>
+          <span>{item.description}</span>
+        </span>
+        <span class="destination-arrow" aria-hidden="true">
+          ↗
+        </span>
+      </a>
+    ))}
+  </nav>
+</section>

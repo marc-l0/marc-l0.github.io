@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { navigation } from "../data/portfolio";
 import { projects } from "../data/projects";
 import { publicationDate } from "../utils/date";
 
@@ -20,7 +21,8 @@ export const GET: APIRoute = async ({ site }) => {
   if (!site) throw new Error("Configure site in astro.config.mjs");
   const paths = [
     "/",
-    "/blog/",
+    ...navigation.map((item) => item.href),
+    "/contacto/",
     ...projects.flatMap((project) =>
       project.details ? [project.details] : [],
     ),

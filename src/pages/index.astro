@@ -1,13 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
-import Services from "../components/sections/Services.astro";
-import Workflow from "../components/sections/Workflow.astro";
-import Projects from "../components/sections/Projects.astro";
-import Experience from "../components/sections/Experience.astro";
-import About from "../components/sections/About.astro";
-import Writing from "../components/sections/Writing.astro";
-import Contact from "../components/sections/Contact.astro";
+import HomeNavigation from "../components/sections/HomeNavigation.astro";
 import { profile } from "../data/portfolio";
 ---
 
@@ -17,12 +11,9 @@ import { profile } from "../data/portfolio";
 >
   <main id="contenido">
     <Hero />
-    <Services />
-    <Projects />
-    <Experience />
-    <About />
-    <Workflow />
-    <Writing />
-    <Contact />
+    <HomeNavigation />
   </main>
 </Layout>
+<script>
+  import "../scripts/legacy-anchors";
+</script>

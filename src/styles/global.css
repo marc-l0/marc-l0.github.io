@@ -375,7 +375,7 @@ h1 {
   color: #b9c1b6;
 }
 
-.project-content h3 {
+.project-content :is(h2, h3) {
   font-size: 2.4rem;
   letter-spacing: -0.04em;
   font-weight: 500;
@@ -457,7 +457,7 @@ h1 {
   background: var(--accent);
 }
 
-.experience-item h3 {
+.experience-item :is(h2, h3) {
   font-size: 1.05rem;
   font-weight: 500;
   margin-block: 9px 12px;
@@ -484,7 +484,7 @@ h1 {
   color: #eeeae2;
 }
 
-.about-content h3 {
+.about-content :is(h2, h3) {
   font-size: 0.72rem;
   font-weight: 400;
   margin-top: 30px;
@@ -869,7 +869,7 @@ h1 {
   .project-image {
     padding: 36px 16px 16px;
   }
-  .project-content h3 {
+  .project-content :is(h2, h3) {
     font-size: 2rem;
   }
   .project-content .eyebrow {
@@ -891,7 +891,7 @@ h1 {
   .experience-period {
     font-size: 0.65rem;
   }
-  .experience-item h3 {
+  .experience-item :is(h2, h3) {
     font-size: 1rem;
   }
   .writing-item {

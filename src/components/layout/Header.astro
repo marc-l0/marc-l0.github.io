@@ -1,6 +1,6 @@
 ---
 import { navigation, profile } from "../../data/portfolio";
-const isBlog = Astro.url.pathname.startsWith("/blog");
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -12,13 +12,23 @@ const isBlog = Astro.url.pathname.startsWith("/blog");
       {navigation.map(({ label, href }) => (
         <a
           href={href}
-          aria-current={label === "Blog" && isBlog ? "page" : undefined}
+          aria-current={
+            currentPath === href
+              ? "page"
+              : currentPath.startsWith(href)
+                ? "location"
+                : undefined
+          }
         >
           {label}
         </a>
       ))}
     </nav>
-    <a class="header-contact" href="/#contacto">
+    <a
+      class="header-contact"
+      href="/contacto/"
+      aria-current={currentPath === "/contacto/" ? "page" : undefined}
+    >
       Hablemos <span aria-hidden="true">↗</span>
     </a>
   </div>

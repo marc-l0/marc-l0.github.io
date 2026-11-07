@@ -1,10 +1,16 @@
 ---
 import { experience } from "../../data/portfolio";
 import SectionHeading from "../ui/SectionHeading.astro";
+interface Props {
+  standalone?: boolean;
+}
+const { standalone = false } = Astro.props;
+const Subheading = standalone ? "h2" : "h3";
 ---
 
 <section id="experiencia" class="section container experience-section">
   <SectionHeading
+    as={standalone ? "h1" : "h2"}
     number="03"
     eyebrow="Mi recorrido"
     title="Aprender haciendo."
@@ -21,7 +27,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
         </div>
         <div>
           <p class="eyebrow">{item.organization}</p>
-          <h3>{item.role}</h3>
+          <Subheading>{item.role}</Subheading>
           <p>{item.description}</p>
         </div>
       </li>

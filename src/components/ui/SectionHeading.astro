@@ -1,16 +1,17 @@
 ---
 interface Props {
   id?: string;
+  as?: "h1" | "h2";
   number: string;
   eyebrow: string;
   title: string;
 }
-const { id, number, eyebrow, title } = Astro.props;
+const { id, number, eyebrow, title, as: Heading = "h2" } = Astro.props;
 ---
 
 <header class="section-heading">
   <p class="eyebrow">
     <span>{number}</span> / {eyebrow}
   </p>
-  <h2 id={id}>{title}</h2>
+  <Heading id={id}>{title}</Heading>
 </header>

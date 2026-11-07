@@ -29,4 +29,4 @@ in `America/Lima` (UTC-05:00), never an invented or backdated time. Include
 `publishedAt` as an ISO 8601 timestamp with offset, `pubDate` as the local date,
 and the next unique `number`. Update the notes before completing the task.
 Only describe completed changes; identify any pending work explicitly.
-Preserve existing posts. The home page displays the two most recent entries.
+Preserve existing posts. The home page links to the blog; keep notes in the dedicated blog pages.

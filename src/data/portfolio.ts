@@ -11,11 +11,38 @@ export const profile = {
 };
 
 export const navigation = [
-  { label: "Servicios", href: "/#servicios" },
-  { label: "Proyectos", href: "/#proyectos" },
-  { label: "Experiencia", href: "/#experiencia" },
-  { label: "Sobre mí", href: "/#sobre-mi" },
-  { label: "Blog", href: "/blog/" },
+  {
+    label: "Servicios",
+    href: "/servicios/",
+    description: "Qué puedo construir para tu negocio y cómo puedo ayudarte.",
+  },
+  {
+    label: "Proyectos",
+    href: "/proyectos/",
+    description: "Soluciones, pantallas y el proceso detrás de cada proyecto.",
+  },
+  {
+    label: "Experiencia",
+    href: "/experiencia/",
+    description:
+      "Mi recorrido profesional y los aprendizajes que lo acompañan.",
+  },
+  {
+    label: "Sobre mí",
+    href: "/sobre-mi/",
+    description: "Quién soy y las tecnologías con las que trabajo.",
+  },
+  {
+    label: "Proceso",
+    href: "/proceso/",
+    description:
+      "Cómo trabajaremos desde la primera conversación hasta la entrega.",
+  },
+  {
+    label: "Blog",
+    href: "/blog/",
+    description: "Ideas, proyectos y notas de lo que voy aprendiendo.",
+  },
 ];
 
 export const experience = [
