@@ -8,22 +8,39 @@ const currentPath = Astro.url.pathname;
     <a class="wordmark" href="/" aria-label={`${profile.name}, inicio`}>
       marcelo<span> / </span>dev<span class="brand-dot">.</span>
     </a>
-    <nav aria-label="Navegación principal">
-      {navigation.map(({ label, href }) => (
-        <a
-          href={href}
-          aria-current={
-            currentPath === href
-              ? "page"
-              : currentPath.startsWith(href)
-                ? "location"
-                : undefined
-          }
-        >
-          {label}
-        </a>
-      ))}
-    </nav>
+    <div class="header-menu" data-header-menu>
+      <nav
+        aria-label="Navegación principal"
+        aria-describedby="nav-scroll-help"
+        data-nav-scroller
+        tabindex="0"
+      >
+        {navigation.map(({ label, href }) => (
+          <a
+            href={href}
+            aria-current={
+              currentPath === href
+                ? "page"
+                : currentPath.startsWith(href)
+                  ? "location"
+                  : undefined
+            }
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+      <span id="nav-scroll-help" class="sr-only">
+        Si quedan opciones fuera de la vista, desliza el menú horizontalmente o
+        recórrelo con el teclado.
+      </span>
+      <div class="nav-scroll-status" aria-hidden="true" data-nav-status>
+        <span data-nav-hint>Desliza para ver más →</span>
+        <span class="nav-scroll-track" data-nav-track hidden>
+          <span class="nav-scroll-thumb"></span>
+        </span>
+      </div>
+    </div>
     <a
       class="header-contact"
       href="/contacto/"
@@ -33,3 +50,7 @@ const currentPath = Astro.url.pathname;
     </a>
   </div>
 </header>
+
+<script>
+  import "../../scripts/mobile-navigation";
+</script>

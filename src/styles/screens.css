@@ -1,3 +1,14 @@
+.header-menu {
+  min-width: 0;
+  position: relative;
+}
+.nav-scroll-status {
+  display: none;
+}
+.header-menu nav:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 /* Dedicated screens reuse the existing section components. */
 .screen-main {
   min-height: 70vh;
@@ -113,16 +124,92 @@
   }
 }
 @media (max-width: 700px) {
-  .site-header nav {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4px 12px;
+  .header-inner {
+    row-gap: 4px;
+    padding-block: 10px;
   }
-  .site-header nav a {
+  .header-menu {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+  }
+  .site-header .header-menu nav {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .site-header .header-menu nav::-webkit-scrollbar {
+    display: none;
+  }
+  .site-header .header-menu nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
     justify-content: center;
   }
+  .header-menu::before,
+  .header-menu::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 52px;
+    width: 18px;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .header-menu::before {
+    left: 0;
+    background: linear-gradient(to right, #141413, transparent);
+  }
+  .header-menu::after {
+    right: 0;
+    background: linear-gradient(to left, #141413, transparent);
+  }
+  .header-menu[data-scroll-left]::before,
+  .header-menu[data-scroll-right]::after {
+    opacity: 1;
+  }
+  .nav-scroll-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 18px;
+    color: var(--muted);
+    font-size: 0.6rem;
+    letter-spacing: 0.025em;
+  }
+  .nav-scroll-status[hidden] {
+    display: none;
+  }
+  .nav-scroll-track {
+    position: relative;
+    display: block;
+    height: 2px;
+    width: 70px;
+    background: var(--line);
+    overflow: hidden;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .nav-scroll-track[hidden] {
+    display: none;
+  }
+  .nav-scroll-thumb {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--accent);
+    width: var(--nav-window, 40%);
+    left: var(--nav-offset, 0%);
+  }
   html {
-    scroll-padding-top: 205px;
+    scroll-padding-top: 160px;
   }
   .destinations-heading {
     align-items: start;
