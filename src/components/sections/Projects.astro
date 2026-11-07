@@ -2,13 +2,14 @@
 import { Image } from "astro:assets";
 import { profile } from "../../data/portfolio";
 import { projects } from "../../data/projects";
+import ProjectCTA from "../ui/ProjectCTA.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 ---
 
 <section id="proyectos" class="section container">
   <div class="section-top">
     <SectionHeading
-      number="01"
+      number="02"
       eyebrow="Proyectos destacados"
       title="De la idea a la práctica."
     />
@@ -56,6 +57,27 @@ import SectionHeading from "../ui/SectionHeading.astro";
         <h3>{project.title}</h3>
         {project.status && <p class="project-status">{project.status}</p>}
         <p>{project.description}</p>
+        <dl class="project-context">
+          <div>
+            <dt>Necesidad</dt>
+            <dd>{project.problem}</dd>
+          </div>
+          <div>
+            <dt>Solución</dt>
+            <dd>{project.solution}</dd>
+          </div>
+          {project.participation && (
+            <div>
+              <dt>Mi participación</dt>
+              <dd>{project.participation}</dd>
+            </div>
+          )}
+        </dl>
+        <ul class="project-features" aria-label="Funcionalidades destacadas">
+          {project.features.map((feature) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
         <ul class="tags" aria-label="Tecnologías">
           {project.technologies.map((tag) => (
             <li>{tag}</li>
@@ -81,4 +103,5 @@ import SectionHeading from "../ui/SectionHeading.astro";
       </div>
     </article>
   ))}
+  <ProjectCTA />
 </section>

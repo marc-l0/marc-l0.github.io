@@ -1,16 +1,17 @@
 export const profile = {
   name: "Axel Marcelo",
   shortName: "Marcelo",
-  role: "Desarrollador web",
+  role: "Desarrollador Full Stack freelance",
   location: "Lima, Perú",
   email: "marceloaxel3@gmail.com",
   github: "https://github.com/marc-l0",
   linkedin: "https://www.linkedin.com/in/marcelaxl/",
   description:
-    "Desarrollador web en formación, con interés en el diseño de interfaces y la creación de aplicaciones útiles. Conoce mis proyectos, experiencia y aprendizajes.",
+    "Desarrollador Full Stack freelance en Lima, Perú. Desarrollo páginas web, aplicaciones y sistemas a medida para emprendedores y empresas. Cuéntame tu proyecto.",
 };
 
 export const navigation = [
+  { label: "Servicios", href: "/#servicios" },
   { label: "Proyectos", href: "/#proyectos" },
   { label: "Experiencia", href: "/#experiencia" },
   { label: "Sobre mí", href: "/#sobre-mi" },
@@ -20,11 +21,19 @@ export const navigation = [
 export const experience = [
   {
     period: "Actualmente",
+    role: "Desarrollador Full Stack independiente",
+    organization: "Proyectos freelance",
+    description:
+      "Desarrollo de sitios web, aplicaciones y soluciones a medida, desde la interfaz hasta la lógica y las integraciones necesarias para cada proyecto.",
+    current: true,
+  },
+  {
+    period: "Prácticas",
     role: "Practicante de desarrollo web",
     organization: "MACROMEC S.A.C.",
     description:
       "Desarrollo y mantenimiento de aplicaciones web. Implementación de funcionalidades, corrección de errores y mejora de interfaces.",
-    current: true,
+    current: false,
   },
   {
     period: "2025",

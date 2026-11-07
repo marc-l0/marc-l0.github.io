@@ -47,15 +47,16 @@ src/
 ├── content/
 │   ├── blog/                      # Artículos y Notas del camino
 │   └── projects/                  # Documentación de los proyectos
+├── scripts/                       # Comportamiento del formulario de cotización
 ├── data/
 │   ├── portfolio.ts               # Perfil, navegación, experiencia y tecnologías
-│   └── projects.ts                # Fichas, imágenes y enlaces de los proyectos
+│   ├── projects.ts                # Fichas, imágenes y enlaces de los proyectos
+│   └── services.ts                # Servicios ofrecidos y proceso de trabajo
 ├── layouts/                       # Documento HTML y metadatos comunes
 ├── pages/                         # Rutas públicas y composición de páginas
 ├── styles/                        # Estilos y reglas responsive
 ├── utils/                         # Funciones compartidas
 └── content.config.ts              # Validación de metadatos del blog
-portfolio-axel-marcelo.code-workspace # Espacio de trabajo de VS Code
 ```
 
 ### Carpetas generadas
@@ -98,4 +99,18 @@ El nombre del archivo determina la URL (`mi-articulo.md` → `/blog/mi-articulo/
 
 Antes de publicar, ejecuta `npm run build` y revisa la portada, las imágenes, la navegación, el contacto y el blog en escritorio y móvil. El proyecto no define una suite de pruebas automatizadas.
 
-GitHub Actions compila y despliega a GitHub Pages al enviar cambios a `main`. La URL pública se configura con `site` en `astro.config.mjs`. Los comandos de desarrollo no publican cambios.
+El despliegue principal está en **Netlify**: https://portfolio-axel-marcelo.netlify.app/. `netlify.toml` define `npm run build`, `dist` y `NODE_VERSION=24`. La rama conectada en Netlify se despliega después del push. La configuración de GitHub Actions existente se conserva; el procesamiento del formulario de cotización corresponde a Netlify.
+
+La URL pública se configura con `site` en `astro.config.mjs`. Los comandos de desarrollo no publican cambios.
+
+## Servicios y cotizaciones
+
+Los servicios y las etapas de trabajo están en `src/data/services.ts`. La presentación y experiencia se mantienen en `src/data/portfolio.ts`; los datos comerciales de cada proyecto, en `src/data/projects.ts`. Solo se documenta la participación conocida: no se atribuye una participación específica en FirmaPE sin confirmación.
+
+El formulario se genera en `src/components/forms/QuoteForm.astro` y su comportamiento está en `src/scripts/quote-form.ts`. Usa **Netlify Forms**, sin base de datos ni nuevas dependencias. No requiere claves privadas. Para recibir solicitudes, hay que confirmar la detección del formulario y configurar las notificaciones en Netlify.
+
+Consulta [activación, pruebas y diagnóstico](docs/netlify-forms.md). En local no existe un receptor real de Forms: el servidor de Astro no envía correos ni debe mostrar éxito cuando falla el POST.
+
+## SEO e imagen para compartir
+
+Los metadatos comunes están en `src/layouts/Layout.astro`. La tarjeta de Open Graph se sirve desde `public/og/portfolio.png`; su fuente editable está en `src/assets/social/portfolio.svg`. Si cambia el dominio, actualiza `site` y la dirección escrita en la tarjeta. La ruta de confirmación `/gracias/` no se indexa.

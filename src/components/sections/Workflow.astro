@@ -1,0 +1,24 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+import { workflow } from "../../data/services";
+---
+
+<section id="proceso" class="section container">
+  <SectionHeading
+    number="05"
+    eyebrow="Cómo trabajaremos"
+    title="Un proceso claro, de principio a fin."
+  />
+  <p class="section-intro">
+    Sabrás qué vamos a construir, cómo avanzamos y qué recibirás al terminar.
+  </p>
+  <ol class="workflow-grid">
+    {workflow.map((step, index) => (
+      <li>
+        <span class="workflow-number">0{index + 1}</span>
+        <h3>{step.title}</h3>
+        <p>{step.description}</p>
+      </li>
+    ))}
+  </ol>
+</section>

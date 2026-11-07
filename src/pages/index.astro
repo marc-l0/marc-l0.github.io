@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import Workflow from "../components/sections/Workflow.astro";
 import Projects from "../components/sections/Projects.astro";
 import Experience from "../components/sections/Experience.astro";
 import About from "../components/sections/About.astro";
@@ -10,14 +12,16 @@ import { profile } from "../data/portfolio";
 ---
 
 <Layout
-  title={`${profile.name} — Desarrollador web`}
+  title={`${profile.name} — Desarrollador Full Stack freelance en Perú`}
   description={profile.description}
 >
   <main id="contenido">
     <Hero />
+    <Services />
     <Projects />
     <Experience />
     <About />
+    <Workflow />
     <Writing />
     <Contact />
   </main>

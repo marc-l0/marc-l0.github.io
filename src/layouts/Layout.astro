@@ -1,15 +1,33 @@
 ---
 import "@fontsource-variable/onest";
+import { profile } from "../data/portfolio";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/global.css";
+import "../styles/freelance.css";
 interface Props {
   title: string;
   description: string;
   type?: "website" | "article";
+  noindex?: boolean;
 }
-const { title, description, type = "website" } = Astro.props;
+const { title, description, type = "website", noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL("/og/portfolio.png", Astro.site);
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: Astro.site?.href,
+  jobTitle: profile.role,
+  email: profile.email,
+  sameAs: [profile.github, profile.linkedin],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lima",
+    addressCountry: "PE",
+  },
+};
 ---
 
 <!doctype html>
@@ -18,6 +36,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#141413" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
@@ -25,6 +45,25 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
+    <meta
+      property="og:site_name"
+      content="Axel Marcelo · Desarrollo Full Stack"
+    />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Axel Marcelo: desarrollo Full Stack y soluciones digitales a medida"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(person).replace(/</g, "\\u003c")}
+    />
     <meta property="og:locale" content="es_PE" />
     <title>{title}</title>
   </head>

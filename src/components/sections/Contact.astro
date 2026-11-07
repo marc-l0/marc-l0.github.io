@@ -1,5 +1,6 @@
 ---
 import { profile } from "../../data/portfolio";
+import QuoteForm from "../forms/QuoteForm.astro";
 ---
 
 <section
@@ -7,23 +8,37 @@ import { profile } from "../../data/portfolio";
   class="contact-section container"
   aria-labelledby="contact-title"
 >
-  <p class="eyebrow">¿Tienes un proyecto en mente?</p>
-  <h2 id="contact-title">
-    Empecemos una
-    <br />
-    <span>conversación.</span>
-  </h2>
-  <div class="contact-bottom">
-    <a class="contact-email" href={`mailto:${profile.email}`}>
-      {profile.email} <span aria-hidden="true">↗</span>
-    </a>
-    <div class="social-links">
-      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-        LinkedIn ↗
+  <div class="contact-heading">
+    <p class="eyebrow">Tu próximo proyecto empieza aquí</p>
+    <h2 id="contact-title">
+      Hablemos de
+      <br />
+      <span>tu proyecto.</span>
+    </h2>
+    <p class="section-intro">
+      Cuéntame la idea, el reto o lo que necesitas mejorar. A partir de ahí,
+      podemos definir una solución y una propuesta a medida.
+    </p>
+  </div>
+  <div class="contact-grid">
+    <aside class="contact-details" aria-label="Otras formas de contacto">
+      <p class="eyebrow">Contacto directo</p>
+      <a class="contact-email" href={`mailto:${profile.email}`}>
+        {profile.email} <span aria-hidden="true">↗</span>
       </a>
-      <a href={profile.github} target="_blank" rel="noopener noreferrer">
-        GitHub ↗
-      </a>
-    </div>
+      <p>
+        Desde Lima, Perú. Disponible para proyectos freelance y colaboración
+        remota.
+      </p>
+      <div class="social-links">
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+          LinkedIn ↗
+        </a>
+        <a href={profile.github} target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+    </aside>
+    <QuoteForm />
   </div>
 </section>

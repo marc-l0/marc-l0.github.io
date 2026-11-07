@@ -1,0 +1,167 @@
+---
+import { services } from "../../data/services";
+---
+
+<form
+  class="quote-form"
+  name="cotizacion"
+  method="POST"
+  action="/gracias/"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  data-quote-form
+  aria-label="Solicitar una cotización"
+>
+  <input type="hidden" name="form-name" value="cotizacion" />
+  <p hidden>
+    <label>
+      No completar este campo:{" "}
+      <input name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+  <p class="form-intro">
+    Cuéntame qué necesitas. Los campos con <span aria-hidden="true">*</span> son
+    obligatorios; presupuesto y plazo son orientativos.
+  </p>
+  <fieldset class="quote-fields">
+    <legend class="sr-only">Datos de contacto y del proyecto</legend>
+    <div class="form-field">
+      <label for="quote-name">
+        Tu nombre <span aria-hidden="true">*</span>
+      </label>
+      <input
+        id="quote-name"
+        name="nombre"
+        type="text"
+        autocomplete="name"
+        required
+        minlength="2"
+        maxlength="100"
+        aria-describedby="quote-name-error"
+      />
+      <span class="field-error" id="quote-name-error" hidden></span>
+    </div>
+    <div class="form-field">
+      <label for="quote-email">
+        Correo electrónico <span aria-hidden="true">*</span>
+      </label>
+      <input
+        id="quote-email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        required
+        maxlength="254"
+        aria-describedby="quote-email-error"
+      />
+      <span class="field-error" id="quote-email-error" hidden></span>
+    </div>
+    <div class="form-field">
+      <label for="quote-company">
+        Empresa o negocio <span class="optional">(opcional)</span>
+      </label>
+      <input
+        id="quote-company"
+        name="empresa"
+        type="text"
+        autocomplete="organization"
+        maxlength="160"
+      />
+    </div>
+    <div class="form-field">
+      <label for="quote-service">
+        Tipo de servicio <span aria-hidden="true">*</span>
+      </label>
+      <select
+        id="quote-service"
+        name="servicio"
+        required
+        aria-describedby="quote-service-error"
+      >
+        <option value="">Selecciona un servicio</option>
+        {services.map((service) => (
+          <option value={service.id}>{service.title}</option>
+        ))}
+        <option value="por-definir">Necesito orientación</option>
+      </select>
+      <span class="field-error" id="quote-service-error" hidden></span>
+    </div>
+    <div class="form-field field-wide">
+      <label for="quote-description">
+        Cuéntame sobre tu proyecto <span aria-hidden="true">*</span>
+      </label>
+      <textarea
+        id="quote-description"
+        name="proyecto"
+        rows="5"
+        required
+        minlength="30"
+        maxlength="5000"
+        aria-describedby="quote-description-help quote-description-error"
+        placeholder="¿Qué quieres conseguir? ¿Qué necesitas que haga tu web o aplicación?"
+      ></textarea>
+      <span class="field-hint" id="quote-description-help">
+        Escribe al menos 30 caracteres. No incluyas contraseñas ni información
+        confidencial.
+      </span>
+      <span class="field-error" id="quote-description-error" hidden></span>
+    </div>
+    <div class="form-field">
+      <label for="quote-budget">
+        Presupuesto aproximado <span class="optional">(opcional)</span>
+      </label>
+      <input
+        id="quote-budget"
+        name="presupuesto"
+        type="text"
+        maxlength="120"
+        placeholder="Rango y moneda, si ya los tienes"
+      />
+    </div>
+    <div class="form-field">
+      <label for="quote-deadline">
+        Plazo esperado <span class="optional">(opcional)</span>
+      </label>
+      <input
+        id="quote-deadline"
+        name="plazo"
+        type="text"
+        maxlength="120"
+        placeholder="Fecha o plazo que tienes en mente"
+      />
+    </div>
+    <div class="field-wide form-submit">
+      <p class="form-privacy">
+        Usaré estos datos para responder a tu consulta y conversar sobre el
+        proyecto. El envío se procesa mediante Netlify Forms.
+      </p>
+      <button class="button button-primary" type="submit">
+        Enviar consulta <span aria-hidden="true">↗</span>
+      </button>
+    </div>
+  </fieldset>
+  <p
+    id="quote-status"
+    class="form-feedback"
+    role="status"
+    aria-live="polite"
+    tabindex="-1"
+    hidden
+  ></p>
+  <p
+    id="quote-error"
+    class="form-feedback form-failure"
+    role="alert"
+    tabindex="-1"
+    hidden
+  ></p>
+  <noscript>
+    <p class="field-hint">
+      Al enviar, se abrirá la confirmación si tu solicitud se recibe
+      correctamente.
+    </p>
+  </noscript>
+</form>
+<script>
+  import "../../scripts/quote-form";
+</script>

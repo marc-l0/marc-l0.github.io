@@ -1,0 +1,39 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+import { services } from "../../data/services";
+---
+
+<section
+  id="servicios"
+  class="section container"
+  aria-labelledby="services-title"
+>
+  <SectionHeading
+    number="01"
+    eyebrow="Servicios"
+    title="Lo que podemos construir."
+    id="services-title"
+  />
+  <p class="section-intro">
+    Desde la primera web de tu negocio hasta una aplicación para simplificar el
+    trabajo de cada día.
+  </p>
+  <div class="service-grid">
+    {services.map((service, index) => (
+      <article class="service-card">
+        <span class="eyebrow">0{index + 1} / A medida</span>
+        <h3>{service.title}</h3>
+        <p>{service.description}</p>
+        <ul>
+          {service.features.map((feature) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+        <a class="text-link" href={`/?servicio=${service.id}#contacto`}>
+          Consultar este servicio <span aria-hidden="true">↗</span>
+          <span class="sr-only">: {service.title}</span>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>

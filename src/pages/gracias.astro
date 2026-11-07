@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { profile } from "../data/portfolio";
+---
+
+<Layout
+  title="Gracias por tu consulta — Axel Marcelo"
+  description="Confirmación de envío de una consulta de proyecto."
+  noindex
+>
+  <main id="contenido" class="container confirmation-page">
+    <p class="eyebrow">Contacto</p>
+    <h1>
+      Gracias por
+      <br />
+      <span>escribirme.</span>
+    </h1>
+    <p>
+      Si llegaste aquí después de enviar el formulario, tu consulta se ha
+      recibido. Te responderé al correo que indicaste para conversar sobre tu
+      proyecto.
+    </p>
+    <a class="button button-primary" href="/">
+      Volver al portfolio ↗
+    </a>
+    <a class="text-link" href={`mailto:${profile.email}`}>
+      También puedes escribirme por correo ↗
+    </a>
+  </main>
+</Layout>
