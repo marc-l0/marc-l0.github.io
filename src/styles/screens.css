@@ -45,7 +45,7 @@
 .screen-main .contact-heading h1 > span {
   font-family: Georgia, serif;
   font-style: italic;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 400;
 }
 .home-destinations {
@@ -79,7 +79,7 @@
   gap: 18px;
   padding: 25px 22px;
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: 12px;
   background: var(--surface);
   min-height: 160px;
   transition:
@@ -87,11 +87,11 @@
     border-color 0.2s;
 }
 .destination-card:hover {
-  border-color: #88765a;
-  background: #24231e;
+  border-color: var(--accent-text);
+  background: var(--surface-hover);
 }
 .destination-number {
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 0.65rem;
   line-height: 2;
 }
@@ -111,12 +111,13 @@
   line-height: 1.8;
 }
 .destination-arrow {
-  color: var(--accent);
+  color: var(--accent-text);
   margin-left: auto;
 }
 .header-contact[aria-current] {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--accent-text);
+  color: var(--on-accent);
+  background: var(--accent-hover);
 }
 @media (max-width: 1000px) {
   .destination-grid {
@@ -164,11 +165,11 @@
   }
   .header-menu::before {
     left: 0;
-    background: linear-gradient(to right, #141413, transparent);
+    background: linear-gradient(to right, var(--background), transparent);
   }
   .header-menu::after {
     right: 0;
-    background: linear-gradient(to left, #141413, transparent);
+    background: linear-gradient(to left, var(--background), transparent);
   }
   .header-menu[data-scroll-left]::before,
   .header-menu[data-scroll-right]::after {

@@ -1,7 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { formatPublication, publicationDate } from "../../utils/date";
+import {
+  formatPublication,
+  publicationDate,
+  publicationDay,
+} from "../../utils/date";
 const posts = (await getCollection("blog")).sort(
   (a, b) =>
     publicationDate(b.data).valueOf() - publicationDate(a.data).valueOf(),
@@ -29,13 +33,13 @@ const posts = (await getCollection("blog")).sort(
       {posts.map((post) => (
         <article>
           <a class="blog-card" href={`/blog/${post.id}/`}>
-            <time datetime={publicationDate(post.data).toISOString()}>
+            <time datetime={publicationDay(post.data)}>
               {formatPublication(post.data)}
             </time>
             <div>
               <h2>{post.data.title}</h2>
               <p>{post.data.description}</p>
-              <span class="text-link">Leer artículo ↗</span>
+              <span class="text-link">Leer artículo →</span>
             </div>
           </a>
         </article>

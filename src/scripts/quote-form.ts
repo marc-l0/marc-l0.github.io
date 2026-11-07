@@ -179,7 +179,7 @@ if (form) {
       sending = false;
       fields.disabled = false;
       form.removeAttribute("aria-busy");
-      submit.innerHTML = 'Enviar consulta <span aria-hidden="true">↗</span>';
+      submit.innerHTML = 'Enviar consulta <span aria-hidden="true">→</span>';
     }
   });
 }

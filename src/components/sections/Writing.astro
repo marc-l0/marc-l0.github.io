@@ -1,7 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import SectionHeading from "../ui/SectionHeading.astro";
-import { formatPublication, publicationDate } from "../../utils/date";
+import {
+  formatPublication,
+  publicationDate,
+  publicationDay,
+} from "../../utils/date";
 const posts = (await getCollection("blog"))
   .sort(
     (a, b) =>
@@ -24,7 +28,7 @@ const posts = (await getCollection("blog"))
   <div class="writing-list">
     {posts.map((post) => (
       <a class="writing-item" href={`/blog/${post.id}/`}>
-        <time datetime={publicationDate(post.data).toISOString()}>
+        <time datetime={publicationDay(post.data)}>
           {formatPublication(post.data)}
         </time>
         <h3>{post.data.title}</h3>

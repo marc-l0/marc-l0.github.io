@@ -140,3 +140,9 @@ La portada contiene la presentación y accesos visuales a las secciones. El cont
 `src/layouts/SectionLayout.astro` comparte la estructura de las pantallas y reutiliza los componentes de `src/components/sections/` en modo `standalone`. La navegación superior y las tarjetas de portada usan la misma lista en `src/data/portfolio.ts`. El caso de estudio de Mi Dojo conserva `/proyectos/mi-dojo/`.
 
 Los CTA usan `/contacto/?servicio=...#contacto`. El nombre del formulario de Netlify no cambia. Los marcadores de la versión anterior (`/#servicios`, `/#proyectos`, etc.) se conservan mediante `src/scripts/legacy-anchors.ts`. Las rutas nuevas están incluidas automáticamente en el sitemap.
+
+## Paleta y fechas visibles
+
+Los colores compartidos se definen al inicio de `src/styles/global.css`: fondo `#0B1120`, superficie `#111827`, azul principal `#3B82F6` y texto `#E5E7EB`. `--accent-text` utiliza un azul más claro para asegurar contraste en enlaces pequeños; los botones principales usan texto oscuro. Las variantes `.button-primary` y `.button-secondary` comparten tamaños y estados.
+
+El blog muestra solo la fecha de publicación mediante `formatPublication` y un `datetime` de día completo mediante `publicationDay`, en `src/utils/date.ts`. Se conserva `publishedAt` para ordenación y metadatos. Los artículos antiguos sin hora mantienen su día original sin desplazarse por la zona horaria.
