@@ -4,7 +4,7 @@ Portfolio personal con Astro, TypeScript y Tailwind CSS. Incluye presentación, 
 
 ## Desarrollo local
 
-Requisitos: Node.js **22.12 o superior** y npm. Validado con Node 24.
+Requisitos: Node.js **22.23.4 o superior** y npm. Se recomienda Node 24, usado también en Netlify.
 
 Desde la carpeta raíz del proyecto:
 
