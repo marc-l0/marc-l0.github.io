@@ -114,3 +114,11 @@ Consulta [activación, pruebas y diagnóstico](docs/netlify-forms.md). En local 
 ## SEO e imagen para compartir
 
 Los metadatos comunes están en `src/layouts/Layout.astro`. La tarjeta de Open Graph se sirve desde `public/og/portfolio.png`; su fuente editable está en `src/assets/social/portfolio.svg`. Si cambia el dominio, actualiza `site` y la dirección escrita en la tarjeta. La ruta de confirmación `/gracias/` no se indexa.
+
+## Revisión antes de promocionar el portfolio
+
+Las tecnologías se agrupan en `technologyGroups` dentro de `src/data/portfolio.ts`. Next.js está incluido por el uso confirmado en Mi Dojo; no se añaden herramientas sin respaldo. La documentación de FirmaPE se conserva hasta recibir los detalles para completarla.
+
+`src/pages/sitemap.xml.ts` genera el sitemap a partir de los artículos y las páginas de proyecto publicadas. Excluye confirmaciones y redirecciones antiguas. `src/pages/robots.txt.ts` anuncia ese sitemap usando la dirección `site` configurada en Astro.
+
+La lista de publicación y comprobación real del contacto está en [docs/pre-publicacion.md](docs/pre-publicacion.md). Las pruebas locales del formulario deben distinguir `astro dev` (envío bloqueado expresamente) de `astro preview` (build de producción, sin receptor de Netlify).

@@ -381,3 +381,69 @@ button:focus-visible {
     flex-direction: column;
   }
 }
+
+/* Focus and touch targets retain the existing visual language. */
+.text-link,
+.site-header nav a,
+.header-contact,
+.wordmark,
+.social-links a,
+.site-footer a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.text-link:active,
+.header-contact:active {
+  color: var(--accent);
+}
+.quote-note {
+  max-width: 660px;
+  margin-top: 16px;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.technology-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  margin-top: 24px;
+}
+.technology-groups h4 {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+.technology-groups .tags {
+  margin-top: 12px;
+}
+.technology-groups .tags li {
+  font-size: 0.72rem;
+}
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: 180px;
+  }
+}
+@media (max-width: 480px) {
+  .technology-groups {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 360px) {
+  html {
+    scroll-padding-top: 220px;
+  }
+}
+.site-footer {
+  align-items: center;
+}

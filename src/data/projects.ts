@@ -42,7 +42,7 @@ export const projects: Project[] = [
     category: "Aplicación web · Gestión de clases de karate",
     description:
       "Clases, profesores y postulaciones en un mismo lugar. Desarrollé una aplicación adaptable a celulares para administrar un dojo y facilitar la inscripción mediante enlaces y códigos QR.",
-    technologies: ["Astro", "React", "NestJS", "Google Sheets API"],
+    technologies: ["Astro", "React", "Next.js", "NestJS", "Google Sheets API"],
     source:
       "https://github.com/marc-l0/gestion-dojo-karate/tree/feature/postulaciones-movil",
     details: "/proyectos/mi-dojo/",

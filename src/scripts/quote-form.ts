@@ -59,6 +59,8 @@ if (form) {
     )
       return false;
     service.value = value;
+    status.hidden = true;
+    failure.hidden = true;
     validate(service);
     return true;
   }
@@ -85,26 +87,32 @@ if (form) {
       url.origin !== location.origin ||
       url.pathname !== location.pathname ||
       url.hash !== "#contacto" ||
-      !url.searchParams.has("servicio") ||
-      sending
+      !url.searchParams.has("servicio")
     )
       return;
+    if (sending) {
+      event.preventDefault();
+      return;
+    }
     if (!preselect(url.searchParams.get("servicio"))) return;
     event.preventDefault();
     history.replaceState(null, "", url);
-    document
-      .getElementById("contacto")
-      ?.scrollIntoView({
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
-      });
+    service.scrollIntoView({
+      block: "center",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
     service.focus({ preventScroll: true });
   });
 
   controls.forEach((control) => {
     control.addEventListener("blur", () => validate(control));
     control.addEventListener("input", () => {
+      if (!sending) {
+        status.hidden = true;
+        failure.hidden = true;
+      }
       if (control.getAttribute("aria-invalid") === "true") validate(control);
     });
     control.addEventListener("change", () => validate(control));
@@ -121,6 +129,13 @@ if (form) {
         "Revisa los campos señalados antes de enviar tu consulta.";
       failure.hidden = false;
       invalid[0].focus();
+      return;
+    }
+    if (import.meta.env.DEV) {
+      failure.textContent =
+        "En este servidor local puedes revisar el formulario, pero el envío está disponible en el sitio publicado. También puedes escribirme por correo.";
+      failure.hidden = false;
+      failure.focus();
       return;
     }
     const body = new URLSearchParams();
@@ -142,15 +157,21 @@ if (form) {
         body: body.toString(),
         signal: controller.signal,
       });
-      if (!response.ok) throw new Error("Submission rejected");
+      if (!response.ok) throw new Error(`HTTP_${response.status}`);
       form.reset();
+      preselect(new URLSearchParams(location.search).get("servicio"));
       status.textContent =
         "Gracias, tu consulta se envió correctamente. Te responderé al correo que indicaste.";
       status.focus();
-    } catch {
+    } catch (error) {
       status.hidden = true;
+      const reason = error instanceof Error ? error.message : "";
       failure.textContent =
-        "No pude confirmar el envío. Tus datos siguen en el formulario: puedes volver a intentarlo o escribirme por correo. Si recibiste una confirmación antes, no hace falta reenviar.";
+        reason === "HTTP_429"
+          ? "Se han recibido demasiadas solicitudes. Espera un momento antes de volver a intentarlo. Tus datos se conservaron."
+          : ["HTTP_400", "HTTP_404", "HTTP_405"].includes(reason)
+            ? "El formulario no está disponible en este momento. Tus datos se conservaron; puedes volver a intentarlo más tarde o escribirme por correo."
+            : "No pude confirmar el envío. Tus datos siguen en el formulario: puedes volver a intentarlo o escribirme por correo. Si recibiste una confirmación antes, no hace falta reenviar.";
       failure.hidden = false;
       failure.focus();
     } finally {

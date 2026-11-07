@@ -27,7 +27,7 @@ El diseño contempla pantallas pequeñas y permite elegir tema claro, oscuro o a
 
 ## Arquitectura y decisiones técnicas
 
-El frontend utiliza **Astro y React**, con **Tailwind CSS y Ant Design** para las interfaces. El backend está construido con **NestJS sobre Node.js**. JavaScript, TypeScript, HTML y CSS forman la base del desarrollo.
+En el frontend trabajé con **Astro, React y Next.js**, con **Tailwind CSS y Ant Design** para las interfaces. El backend está construido con **NestJS sobre Node.js**. JavaScript, TypeScript, HTML y CSS forman la base del desarrollo.
 
 En lugar de una base de datos tradicional, utilicé **Google Sheets mediante Google Sheets API** como almacenamiento. Esto implicó configurar el acceso y coordinar la lectura y actualización de la información desde el backend.
 

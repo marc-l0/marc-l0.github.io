@@ -27,7 +27,7 @@ El código está preparado; la recepción y las notificaciones no se consideran 
 
 Esta variable no es un secreto. La integración no requiere nuevas variables privadas. `site` en `astro.config.mjs` contiene la dirección pública de Netlify para los enlaces canónicos, Open Graph y datos estructurados.
 
-El formulario depende del procesamiento de Netlify. En GitHub Pages o en un servidor estático local no hay un receptor de formularios; un error de envío en esos entornos no se convierte en una confirmación falsa.
+El formulario depende del procesamiento de Netlify. En GitHub Pages o en un servidor estático local no hay un receptor de formularios. En `astro dev` el envío con JavaScript se bloquea explícitamente con un aviso y se conservan los datos; en `astro preview` no existe el procesamiento de Netlify y un POST rechazado debe mostrar error.
 
 ## Campos y protección
 
@@ -50,3 +50,20 @@ Para cambiar los servicios, edita `src/data/services.ts`. Los enlaces `/?servici
 Si el formulario falla en producción, confirma el nombre `cotizacion` en el panel, la detección activada y el despliegue más reciente. Un formulario detectado sin emails suele requerir revisar las notificaciones, el destinatario y el spam; no implica necesariamente que la solicitud no se haya almacenado.
 
 La página `/gracias/` está excluida de indexación. La confirmación de envío en la interfaz no promete que ya se haya leído el mensaje ni que se haya entregado una notificación por correo.
+
+## Revisión de preparación para clientes
+
+La revisión del código confirma que los campos y metadatos de Netlify aparecen en el HTML compilado. Esto acredita que el formulario es detectable, pero no prueba que la cuenta haya procesado un despliegue ni recibido una solicitud.
+
+El acceso de inspección al sitio publicado desde este entorno devuelve HTTP 403; no se ha realizado ni confirmado un envío de producción ni se ha accedido al panel privado de Netlify. Ese 403 de inspección no es un diagnóstico del formulario del visitante.
+
+Para cerrar la verificación real:
+
+1. Comprueba que el deploy más reciente está Published y que Forms muestra `cotizacion`.
+2. Si activaste la detección después del despliegue, vuelve a desplegar y confirma el formulario antes de probar.
+3. Envía una prueba con tu propio correo desde el dominio de Netlify y revisa que figure en las submissions de `cotizacion`. Revisa también las filtradas como spam.
+4. Confirma la notificación en el correo destinatario, incluido spam. Si no llega pero la submission existe, el problema es la notificación y no el almacenamiento del formulario.
+5. Si falla el envío, conserva el estado HTTP y la respuesta de la petición POST en Red/Network. No publiques los datos personales del formulario al compartir el diagnóstico.
+6. Repite desde un teléfono y comprueba también el envío sin JavaScript.
+
+En producción se mantienen los campos al recibir errores HTTP, fallos de red o tiempos de espera. Una respuesta HTTP aceptada muestra confirmación, pero la comprobación de almacenamiento y correo siempre se hace en el panel. No se valida la recepción mediante una respuesta de prueba local.

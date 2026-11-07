@@ -53,15 +53,29 @@ export const experience = [
   },
 ];
 
-export const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "Astro",
-  "Tailwind CSS",
-  "Python",
-  "Flask",
-  "Kotlin",
-  "SQL Server",
-  "Git",
-];
+// Technologies confirmed through Mi Dojo, FirmaPE and this portfolio.
+export const technologyGroups = [
+  {
+    title: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Astro",
+      "Tailwind CSS",
+      "HTML",
+      "CSS",
+    ],
+  },
+  { title: "Backend", items: ["Node.js", "NestJS", "Python", "Flask"] },
+  {
+    title: "Datos y almacenamiento",
+    items: ["SQL Server", "Google Sheets API"],
+  },
+  {
+    title: "Herramientas y despliegue",
+    items: ["Git", "GitHub", "Netlify", "pnpm", "Turborepo"],
+  },
+  { title: "Desarrollo móvil", items: ["Kotlin"] },
+] as const;

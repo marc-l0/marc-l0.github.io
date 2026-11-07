@@ -1,5 +1,5 @@
 ---
-import { skills } from "../../data/portfolio";
+import { technologyGroups } from "../../data/portfolio";
 import SectionHeading from "../ui/SectionHeading.astro";
 ---
 
@@ -24,11 +24,18 @@ import SectionHeading from "../ui/SectionHeading.astro";
       conocimientos. Me interesa entender cada necesidad y convertirla en una
       herramienta útil, fácil de usar y de mantener.
     </p>
-    <h3>Herramientas con las que trabajo</h3>
-    <ul class="tags">
-      {skills.map((skill) => (
-        <li>{skill}</li>
+    <h3>Tecnologías con las que trabajo</h3>
+    <div class="technology-groups">
+      {technologyGroups.map((group) => (
+        <section aria-label={group.title}>
+          <h4>{group.title}</h4>
+          <ul class="tags">
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
       ))}
-    </ul>
+    </div>
   </div>
 </section>

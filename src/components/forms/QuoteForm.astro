@@ -66,7 +66,9 @@ import { services } from "../../data/services";
         type="text"
         autocomplete="organization"
         maxlength="160"
+        aria-describedby="quote-company-error"
       />
+      <span class="field-error" id="quote-company-error" hidden></span>
     </div>
     <div class="form-field">
       <label for="quote-service">
@@ -116,7 +118,9 @@ import { services } from "../../data/services";
         type="text"
         maxlength="120"
         placeholder="Rango y moneda, si ya los tienes"
+        aria-describedby="quote-budget-error"
       />
+      <span class="field-error" id="quote-budget-error" hidden></span>
     </div>
     <div class="form-field">
       <label for="quote-deadline">
@@ -128,7 +132,9 @@ import { services } from "../../data/services";
         type="text"
         maxlength="120"
         placeholder="Fecha o plazo que tienes en mente"
+        aria-describedby="quote-deadline-error"
       />
+      <span class="field-error" id="quote-deadline-error" hidden></span>
     </div>
     <div class="field-wide form-submit">
       <p class="form-privacy">
