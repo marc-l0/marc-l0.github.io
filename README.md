@@ -146,3 +146,7 @@ Los CTA usan `/contacto/?servicio=...#contacto`. El nombre del formulario de Net
 Los colores compartidos se definen al inicio de `src/styles/global.css`: fondo `#0B1120`, superficie `#111827`, azul principal `#3B82F6` y texto `#E5E7EB`. `--accent-text` utiliza un azul más claro para asegurar contraste en enlaces pequeños; los botones principales usan texto oscuro. Las variantes `.button-primary` y `.button-secondary` comparten tamaños y estados.
 
 El blog muestra solo la fecha de publicación mediante `formatPublication` y un `datetime` de día completo mediante `publicationDay`, en `src/utils/date.ts`. Se conserva `publishedAt` para ordenación y metadatos. Los artículos antiguos sin hora mantienen su día original sin desplazarse por la zona horaria.
+
+## Cuenta de GitHub y contacto
+
+El perfil del portfolio apunta a `mizu-dev079` y el correo de contacto es `mizudev079@gmail.com`. El repositorio es `mizu-dev079/portfolio-axel-marcelo`, verificado mediante Git. Consulta [la guía de migración y Netlify](docs/cambio-de-identidad-github.md). El dominio público de Netlify no cambia por renombrar el repositorio.

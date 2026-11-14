@@ -44,7 +44,7 @@ export const projects: Project[] = [
       "Clases, profesores y postulaciones en un mismo lugar. Desarrollé una aplicación adaptable a celulares para administrar un dojo y facilitar la inscripción mediante enlaces y códigos QR.",
     technologies: ["Astro", "React", "Next.js", "NestJS", "Google Sheets API"],
     source:
-      "https://github.com/marc-l0/gestion-dojo-karate/tree/feature/postulaciones-movil",
+      "https://github.com/mizu-dev079/gestion-dojo-karate/tree/feature/postulaciones-movil",
     details: "/proyectos/mi-dojo/",
     status: "En desarrollo · Demo local funcional",
   },

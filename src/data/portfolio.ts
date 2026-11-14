@@ -3,8 +3,8 @@ export const profile = {
   shortName: "Marcelo",
   role: "Desarrollador Full Stack freelance",
   location: "Lima, Perú",
-  email: "marceloaxel3@gmail.com",
-  github: "https://github.com/marc-l0",
+  email: "mizudev079@gmail.com",
+  github: "https://github.com/mizu-dev079",
   linkedin: "https://www.linkedin.com/in/marcelaxl/",
   description:
     "Desarrollador Full Stack freelance en Lima, Perú. Desarrollo páginas web, aplicaciones y sistemas a medida para emprendedores y empresas. Cuéntame tu proyecto.",

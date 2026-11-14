@@ -59,4 +59,4 @@ Quedan ajustes y validaciones con el cliente antes de considerarla terminada y d
 
 ## Código del proyecto
 
-El repositorio es [marc-l0/gestion-dojo-karate](https://github.com/marc-l0/gestion-dojo-karate). Los últimos cambios descritos están en la rama [feature/postulaciones-movil](https://github.com/marc-l0/gestion-dojo-karate/tree/feature/postulaciones-movil).
+El repositorio es [mizu-dev079/gestion-dojo-karate](https://github.com/mizu-dev079/gestion-dojo-karate). Los últimos cambios descritos están en la rama [feature/postulaciones-movil](https://github.com/mizu-dev079/gestion-dojo-karate/tree/feature/postulaciones-movil).
